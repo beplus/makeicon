@@ -35,7 +35,7 @@ downlouad and unzip
 or
 
 ```bash
-$ brew ????? ????
+$ brew install makeicon
 ```
 
 ## Usage

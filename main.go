@@ -15,8 +15,11 @@ import (
 var args struct {
 	Filename string `short:"f" long:"file" description:"filename to make assets"`
 }
+var version = "master"
 
 func main() {
+	println(version)
+
 	_, err := flags.ParseArgs(&args, os.Args)
 	if err == nil {
 
