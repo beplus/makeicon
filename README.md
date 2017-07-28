@@ -3,7 +3,7 @@
 [![Twitter: @beplusio](https://img.shields.io/badge/contact-@beplusio-blue.svg?style=flat)](https://twitter.com/beplusio)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/beplus/makeicon/blob/master/LICENSE)
 [![CircleCI Build Status](https://circleci.com/gh/beplus/makeicon.svg?style=shield)](https://circleci.com/gh/beplus/makeicon)
-[![Release](https://img.shields.io/badge/contact-@beplusio-blue.svg?style=flat)](https://github.com/beplus/makeicon/releases/latest)
+[![Release](https://img.shields.io/github/release/goreleaser/goreleaser.svg?style=flat-square)](https://github.com/beplus/makeicon/releases/latest)
 
 Code repository for s course at [Udemy](https://www.udemy.com) about [React Native](https://www.udemy.com)
 
