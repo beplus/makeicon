@@ -20,8 +20,7 @@ var version = "master"
 //}
 
 func main() {
-	log.Printf("running goreleaser %v", version)
-
+	println(version)
 	//_, err := flags.ParseArgs(&args, os.Args)
 	//if err == nil {
 	//

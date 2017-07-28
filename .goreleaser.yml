@@ -7,7 +7,6 @@ builds:
       - linux
     goarch:
       - amd64
-    ldflags: -s -w -X main.build={{.Version}}
 # Archive customization
 archive:
   format: tar.gz
