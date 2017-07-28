@@ -1,9 +1,9 @@
 class Makeicon < Formula
   desc ""
   homepage ""
-  url "https://github.com/beplus/makeicon/releases/download/v0.0.17/makeicon_0.0.17_macOS_64-bit.tar.gz"
-  version "0.0.17"
-  sha256 "501ef916b0a2245e604c247f14477266d826fca4d6e0f9c2b2346417085f76bd"
+  url "https://github.com/beplus/makeicon/releases/download/v0.0.18/makeicon_0.0.18_macOS_64-bit.tar.gz"
+  version "0.0.18"
+  sha256 "9e0464ff4066d36636574f9c992bfaf1969fbe00fc8e5dcfb09c6db615c06bca"
 
   def install
     bin.install "makeicon"
