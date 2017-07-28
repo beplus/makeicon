@@ -13,7 +13,7 @@ import (
 )
 
 var args struct {
-	Filename string `short:"n" long:"file" description:"filename to make assets"`
+	Filename string `short:"f" long:"file" description:"filename to make assets"`
 }
 
 func main() {
