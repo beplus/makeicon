@@ -1,6 +1,6 @@
 builds:
   - main: main.go
-    binary: mobile-icons-generator
+    binary: makeicon
     goos:
       - windows
       - darwin
@@ -14,7 +14,7 @@ archive:
     amd64: 64-bit
     darwin: macOS
   files:
-    - mobile-icons-generator.license.md
+    - LICENSE
     - README.md
 brew:
   github:

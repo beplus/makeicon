@@ -12,7 +12,7 @@ import (
 	"github.com/mholt/archiver"
 	"time"
 	"io/ioutil"
-	"github.com/beplus/mobile-icons-generator/app/helper/s3-helper"
+	"github.com/beplus/makeicon/app/helper/s3-helper"
 	"strconv"
 	"github.com/disintegration/imaging"
 )

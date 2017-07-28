@@ -8,7 +8,7 @@ import (
 	"strings"
 	"bufio"
 	"encoding/base64"
-	"github.com/beplus/mobile-icons-generator/app/helper/image-helper"
+	"github.com/beplus/makeicon/app/helper/image-helper"
 	"fmt"
 )
 
