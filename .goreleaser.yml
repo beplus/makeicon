@@ -20,16 +20,3 @@ brew:
   github:
     owner: beplus
     name: mobile-icons-generator
-
-  # Dependencies of your package
-  dependencies:
-    - git
-    - zsh
-
-  # Packages that conflict with your package
-  conflicts:
-    - svn
-
-  # Custom install script for brew. Default is 'bin.install "program"'
-  install: |
-    bin.install "program"
