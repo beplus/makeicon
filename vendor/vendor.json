@@ -1,0 +1,37 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "YmarTNe8NlR3nkpX6MoCvhisfoA=",
+			"path": "github.com/disintegration/imaging",
+			"revision": "ac27d1805a555e1754fa177216ee07f4e63c30b5",
+			"revisionTime": "2017-03-19T14:47:19Z"
+		},
+		{
+			"checksumSHA1": "Oqx/4M+xDiB2ME3YkffeZmz/ohk=",
+			"path": "github.com/jessevdk/go-flags",
+			"revision": "5695738f733662da3e9afc2283bba6f3c879002d",
+			"revisionTime": "2017-05-21T21:21:05Z"
+		},
+		{
+			"checksumSHA1": "UD/pejajPyS7WaWVXq2NU1eK4Ic=",
+			"path": "golang.org/x/image/bmp",
+			"revision": "426cfd8eeb6e08ab1932954e09e3c2cb2bc6e36d",
+			"revisionTime": "2017-05-14T06:33:48Z"
+		},
+		{
+			"checksumSHA1": "SmD/LkP3vgBGPKT6I38wH7Jb6QI=",
+			"path": "golang.org/x/image/tiff",
+			"revision": "426cfd8eeb6e08ab1932954e09e3c2cb2bc6e36d",
+			"revisionTime": "2017-05-14T06:33:48Z"
+		},
+		{
+			"checksumSHA1": "PF6VjvpNpOdR8epWH1Liyy7x1Qg=",
+			"path": "golang.org/x/image/tiff/lzw",
+			"revision": "426cfd8eeb6e08ab1932954e09e3c2cb2bc6e36d",
+			"revisionTime": "2017-05-14T06:33:48Z"
+		}
+	],
+	"rootPath": "github.com/beplus/mobile-icons-generator"
+}
