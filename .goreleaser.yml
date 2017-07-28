@@ -19,4 +19,4 @@ archive:
 brew:
   github:
     owner: beplus
-    name: mobile-icons-generator
+    name: makeicon
