@@ -18,34 +18,33 @@ var args struct {
 
 func main() {
 	_, err := flags.ParseArgs(&args, os.Args)
-	if err != nil {
-		log.Fatal("Parsing flags error")
-	}
+	if err == nil {
 
-	if args.Filename == "" {
-		log.Fatal("No file set use -n or --file to set it")
-	}
+		if args.Filename == "" {
+			log.Fatal("No file set use -n or --file to set it")
+		}
 
-	// todo windows \
-	s := strings.Split(args.Filename, "/")
-	filename := s[len(s)-1]
-	// prepare json body
+		// todo windows \
+		s := strings.Split(args.Filename, "/")
+		filename := s[len(s)-1]
+		// prepare json body
 
-	filenameArray := strings.Split(filename, ".")
-	name, extension := filenameArray[0], filenameArray[1]
+		filenameArray := strings.Split(filename, ".")
+		name, extension := filenameArray[0], filenameArray[1]
 
-	myImage, err := image_helper.NewMyImageFromBase64(getImageBase64(args.Filename), name, extension)
-	if err != nil {
-		log.Fatal(err)
-	}
+		myImage, err := image_helper.NewMyImageFromBase64(getImageBase64(args.Filename), name, extension)
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	fmt.Println("Processing icons... It could few seconds...")
+		fmt.Println("Processing icons... It could few seconds...")
 
-	_, err = myImage.Upload()
-	if err != nil {
-		log.Println(err)
-	} else {
-		fmt.Println("Icons saved to folder 'AppIcon'.")
+		_, err = myImage.Upload()
+		if err != nil {
+			log.Println(err)
+		} else {
+			fmt.Println("Icons saved to folder 'AppIcon'.")
+		}
 	}
 }
 
