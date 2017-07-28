@@ -2,53 +2,55 @@
 package main
 
 import (
-	"github.com/jessevdk/go-flags"
+	//"github.com/jessevdk/go-flags"
 	"os"
 	"log"
-	"strings"
+	//"strings"
 	"bufio"
 	"encoding/base64"
-	"github.com/beplus/makeicon/app/helper/image-helper"
-	"fmt"
+	//"github.com/beplus/makeicon/app/helper/image-helper"
+	//"fmt"
 )
 
-var args struct {
-	Filename string `short:"f" long:"file" description:"filename to make assets"`
-}
 var version = "master"
 
+//
+//var args struct {
+//	Filename string `short:"f" long:"file" description:"filename to make assets"`
+//}
+
 func main() {
-	println(version)
+	log.Printf("running goreleaser %v", version)
 
-	_, err := flags.ParseArgs(&args, os.Args)
-	if err == nil {
-
-		if args.Filename == "" {
-			log.Fatal("No file set use -n or --file to set it")
-		}
-
-		// todo windows \
-		s := strings.Split(args.Filename, "/")
-		filename := s[len(s)-1]
-		// prepare json body
-
-		filenameArray := strings.Split(filename, ".")
-		name, extension := filenameArray[0], filenameArray[1]
-
-		myImage, err := image_helper.NewMyImageFromBase64(getImageBase64(args.Filename), name, extension)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		fmt.Println("Processing icons... It could few seconds...")
-
-		_, err = myImage.Upload()
-		if err != nil {
-			log.Println(err)
-		} else {
-			fmt.Println("Icons saved to folder 'AppIcon'.")
-		}
-	}
+	//_, err := flags.ParseArgs(&args, os.Args)
+	//if err == nil {
+	//
+	//	if args.Filename == "" {
+	//		log.Fatal("No file set use -n or --file to set it")
+	//	}
+	//
+	//	// todo windows \
+	//	s := strings.Split(args.Filename, "/")
+	//	filename := s[len(s)-1]
+	//	// prepare json body
+	//
+	//	filenameArray := strings.Split(filename, ".")
+	//	name, extension := filenameArray[0], filenameArray[1]
+	//
+	//	myImage, err := image_helper.NewMyImageFromBase64(getImageBase64(args.Filename), name, extension)
+	//	if err != nil {
+	//		log.Fatal(err)
+	//	}
+	//
+	//	fmt.Println("Processing icons... It could few seconds...")
+	//
+	//	_, err = myImage.Upload()
+	//	if err != nil {
+	//		log.Println(err)
+	//	} else {
+	//		fmt.Println("Icons saved to folder 'AppIcon'.")
+	//	}
+	//}
 }
 
 func getImageBase64(filename string) string {
