@@ -6,14 +6,8 @@ import (
 	"github.com/nfnt/resize"
 	"image/png"
 	"image"
-	"image/jpeg"
 	"os"
 	"errors"
-	"github.com/mholt/archiver"
-	"time"
-	"io/ioutil"
-	"github.com/beplus/makeicon/app/helper/s3-helper"
-	"strconv"
 	"github.com/disintegration/imaging"
 )
 
@@ -40,7 +34,7 @@ func NewMyImageFromBase64(base64String string, name string, extension string) (*
 		return nil, err
 	}
 
-	return &MyImage{Image: image, File:File{Name:name, Extension:extension}}, nil
+	return &MyImage{Image: image, File: File{Name: name, Extension: extension}}, nil
 }
 
 func getImageFromBase64(base64String string, extension string) (image.Image, error) {
@@ -56,8 +50,6 @@ func getImageFromBase64(base64String string, extension string) (image.Image, err
 	switch extension {
 	case "png":
 		img, err = png.Decode(r)
-	//case "jpg":
-	//	img, err = jpeg.Decode(r)
 	default:
 		return img, errors.New("unknown file extension " + extension)
 	}
@@ -77,108 +69,27 @@ func (m MyImage) checkIconProperties() (error) {
 	return nil
 }
 
-func (m MyImage) checkSplashProperties() (error) {
-	x, y := m.Image.Bounds().Dx(), m.Image.Bounds().Dy()
-	if x > 1024 && y < 1024 {
-		return errors.New("Image resollution is smaler then 1024")
-	}
-
-	return nil
-}
-
-/**
-source: splash|icons
-target: S3|local
- */
-func (m MyImage) Upload(source string, target string, orientation string, method string) (string, error) {
+func (m MyImage) Upload() (string, error) {
 	resized := []ResizeImage{}
-	path := "files"
-	switch source{
-	case "splash":
-		err := m.checkSplashProperties()
-		if err != nil {
-			return "", err
-		}
-		resized = SplashResized
-		path = "files/splash"
-	case "icons":
-		orientation = ""
-		err := m.checkIconProperties()
-		if err != nil {
-			return "", err
-		}
-		resized = IconResized
-		path = "files/icons"
-	default:
-		return "", errors.New("Unknown source : " + source)
+	err := m.checkIconProperties()
+	if err != nil {
+		return "", err
 	}
+	resized = IconResized
 
-	switch method {
-	case "folder":
-		return "", m.save("AppIcon", resized, orientation)
-	case "zip":
-		prefix := strconv.FormatInt(time.Now().UnixNano(), 10) + "_" + m.File.Name
+	return "", m.save("AppIcon", resized)
 
-		// create temp dir without prefix in default directory
-		tempDirPath, err := ioutil.TempDir("", "")
-		if err != nil {
-			return "", err
-		}
-		defer os.RemoveAll(tempDirPath)
-
-		err = m.save(tempDirPath, resized, orientation)
-		if err != nil {
-			return "", err
-		}
-
-		zipFileName := prefix + "_" + source + ".zip"
-
-		switch target {
-		case "S3":
-			zipPath := tempDirPath + "/" + zipFileName
-
-			err = archiver.Zip.Make(zipPath, []string{tempDirPath + "/" + Ios, tempDirPath + "/" + Android})
-			if err != nil {
-				return "", err
-			}
-
-			return s3_helper.UploadToS3(zipPath, path + m.File.Name + "/" + zipFileName)
-		case "local":
-			zipPath := zipFileName
-
-			err = archiver.Zip.Make(zipPath, []string{tempDirPath + "/" + Ios, tempDirPath + "/" + Android})
-			if err != nil {
-				return "", err
-			}
-
-			return "", nil
-		default:
-			return "", errors.New("Unknown target : " + target)
-		}
-	default:
-		return "", errors.New("Unknown method : " + method)
-	}
 }
 
-func (m MyImage) save(dir string, resized []ResizeImage, orientation string) (error) {
+func (m MyImage) save(dir string, resized []ResizeImage) (error) {
 	for _, item := range resized {
-		switch orientation {
-		case "portrait":
-			if item.Width > item.Height {
-				continue
-			}
-		case "landscape":
-			if item.Width < item.Height {
-				continue
-			}
-		}
 
 		// create directories if not exist
 		if _, err := os.Stat(dir + item.Path); os.IsNotExist(err) {
-			os.MkdirAll(dir + item.Path, 0777)
+			os.MkdirAll(dir+item.Path, 0777)
 		}
 		// save image in specific size
-		err := m.SaveInSize(dir + item.Path + item.Name, item.Width, item.Height)
+		err := m.SaveInSize(dir+item.Path+item.Name, item.Width, item.Height)
 		if err != nil {
 			return err
 		}
@@ -200,7 +111,7 @@ func (m MyImage) SaveInSize(path string, width uint, height uint) (error) {
 	case inputRatio > outputRatio:
 		tmpImg := resize.Resize(0, height, m.Image, resize.Lanczos2)
 		resizedImage = imaging.CropCenter(tmpImg, int(width), int(height))
-	default :
+	default:
 		resizedImage = resize.Resize(width, height, m.Image, resize.Lanczos2)
 	}
 
@@ -217,8 +128,6 @@ func save(path string, image image.Image, extension string) (error) {
 	switch extension {
 	case "png":
 		png.Encode(out, image)
-	case "jpg":
-		jpeg.Encode(out, image, nil)
 	default:
 		return errors.New("unknown file extension " + extension)
 	}

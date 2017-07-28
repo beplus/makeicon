@@ -41,7 +41,7 @@ func main() {
 
 	fmt.Println("Processing icons... It could few seconds...")
 
-	_, err = myImage.Upload("icons", "local", "", "folder")
+	_, err = myImage.Upload()
 	if err != nil {
 		log.Println(err)
 	} else {
