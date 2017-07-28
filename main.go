@@ -14,40 +14,46 @@ import (
 
 var version = "master"
 
-
 var args struct {
 	Filename string `short:"f" long:"file" description:"filename to make assets"`
+	Version  bool `short:"v" long:"version" description:"show version"`
 }
 
 func main() {
-	println(version)
+
 	_, err := flags.ParseArgs(&args, os.Args)
 	if err == nil {
+		if args.Version {
 
-		if args.Filename == "" {
-			log.Fatal("No file set use -n or --file to set it")
-		}
+			fmt.Printf(" Version: %v \n License: MIT \n Copyright (c) 2017 Be Bplus s.r.o. ", version)
 
-		// todo windows \
-		s := strings.Split(args.Filename, "/")
-		filename := s[len(s)-1]
-		// prepare json body
-
-		filenameArray := strings.Split(filename, ".")
-		name, extension := filenameArray[0], filenameArray[1]
-
-		myImage, err := image_helper.NewMyImageFromBase64(getImageBase64(args.Filename), name, extension)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		fmt.Println("Processing icons... It could few seconds...")
-
-		_, err = myImage.Upload()
-		if err != nil {
-			log.Println(err)
+			println(version)
 		} else {
-			fmt.Println("Icons saved to folder 'AppIcon'.")
+			if args.Filename == "" {
+				log.Fatal("No file set use -n or --file to set it")
+			}
+
+			// todo windows \
+			s := strings.Split(args.Filename, "/")
+			filename := s[len(s)-1]
+
+			// prepare json body
+			filenameArray := strings.Split(filename, ".")
+			name, extension := filenameArray[0], filenameArray[1]
+
+			myImage, err := image_helper.NewMyImageFromBase64(getImageBase64(args.Filename), name, extension)
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			fmt.Println("Processing icons... It could few seconds...")
+
+			_, err = myImage.Upload()
+			if err != nil {
+				log.Println(err)
+			} else {
+				fmt.Println("Icons saved to folder 'AppIcon'.")
+			}
 		}
 	}
 }
