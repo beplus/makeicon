@@ -45,7 +45,7 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	} else {
-		fmt.Println("Icons saved to folder 'icons'.")
+		fmt.Println("Icons saved to folder 'AppIcon'.")
 	}
 }
 
