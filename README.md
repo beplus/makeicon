@@ -39,25 +39,35 @@ $ brew install makeicon
 ```
 
 ## Usage
-#### Command-Line Interface
-##### Help
+Command-Line Interface
+#### Help
 ```bash
-$ makeicon --help
+$ ./makeicon --help
 ```
 or 
 ```bash
-$ makeicon -h
+$ ./makeicon -h
 ```
 
-##### Make
+#### Make
 for create directory with icons from file `Image.png`
 ```bash
-$ makeicons --file Image.png
+$ ./makeicon --file Image.png
 ```
 or 
 ```bash
-$ makeicons -f Image.png
+$ ./makeicon -f Image.png
 ```
+
+#### Version 
+```bash
+$ ./makeicon --version
+```
+or
+```bash
+$ ./makeicon --v
+```
+
 
 ## FAQ
 
