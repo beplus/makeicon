@@ -16,5 +16,5 @@ brew:
   github:
     owner: beplus
     name: makeicon
-    description: Generate mobile app icons in all resolutions for both iOS and Android
-    homepage: https://github.com/beplus/makeicon
+  description: "Generate mobile app icons in all resolutions for both iOS and Android"
+  homepage: "https://github.com/beplus/makeicon"
