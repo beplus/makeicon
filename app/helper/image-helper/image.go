@@ -8,7 +8,6 @@ import (
 	"image"
 	"os"
 	"errors"
-	"github.com/disintegration/imaging"
 )
 
 type MyImage struct {
@@ -98,22 +97,8 @@ func (m MyImage) save(dir string, resized []ResizeImage) (error) {
 }
 
 func (m MyImage) SaveInSize(path string, width uint, height uint) (error) {
-	x, y := m.Image.Bounds().Dx(), m.Image.Bounds().Dy()
 
-	inputRatio := float64(x) / float64(y)
-	outputRatio := float64(width) / float64(height)
-
-	var resizedImage image.Image
-	switch {
-	case inputRatio < outputRatio:
-		tmpImg := resize.Resize(width, 0, m.Image, resize.Lanczos2)
-		resizedImage = imaging.CropCenter(tmpImg, int(width), int(height))
-	case inputRatio > outputRatio:
-		tmpImg := resize.Resize(0, height, m.Image, resize.Lanczos2)
-		resizedImage = imaging.CropCenter(tmpImg, int(width), int(height))
-	default:
-		resizedImage = resize.Resize(width, height, m.Image, resize.Lanczos2)
-	}
+	resizedImage := resize.Resize(width, height, m.Image, resize.Lanczos2)
 
 	return save(path, resizedImage, m.File.Extension)
 }
