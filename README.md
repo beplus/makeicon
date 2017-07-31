@@ -12,65 +12,64 @@
 [![CircleCI Build Status](https://circleci.com/gh/beplus/makeicon.svg?style=shield)](https://circleci.com/gh/beplus/makeicon)
 [![Release](https://img.shields.io/github/release/beplus/makeicon.svg?style=flat-square)](https://github.com/beplus/makeicon/releases/latest)
 
-Code repository for a course at [Udemy](https://www.udemy.com) about [React Native](https://www.udemy.com)
+Generates mobile app icons in all resolutions for both **iOS** and **Android**.
+
 
 ## Table of contents
-- [Requirments](#Requirments)
+- [Requirements](#Requirements)
 - [Installation](#Installation)
 - [Usage](#Usage)
+- [Contributors](#Contributors)
 - [License](#License)
-- [FAQ](#FAQ)
 
 
-
-## Requirments: 
-* Mac OS, Linux or Windows 
-* 64bites version
+## Requirements:
+* Mac OS X, Linux or Windows
+* 64-bit version
 
 
 ## Installation
 
-downlouad and unzip 
-
-or
+**Download** from Releases and extract _or_ use **Homebrew**
 
 ```bash
-$ brew install makeicon
+$ brew install https://raw.githubusercontent.com/beplus/makeicon/master/makeicon.rb
+$ brew upgrade https://raw.githubusercontent.com/beplus/makeicon/master/makeicon.rb
 ```
+
 
 ## Usage
-Command-Line Interface
-#### Help
+Command Line Interface
+
+### Get Help on Usage
 ```bash
-$ ./makeicon --help
-```
-or 
-```bash
-$ ./makeicon -h
+$ makeicon --help
+# or
+$ makeicon -h
 ```
 
-#### Make
-for create directory with icons from file `Image.png`
+### Generate the Icons
+To create an `AppIcon` directory with generated Icons from a file `./Icon.png`
 ```bash
-$ ./makeicon --file Image.png
-```
-or 
-```bash
-$ ./makeicon -f Image.png
+$ makeicon --file ./Icon.png
+# or
+$ makeicon -f ./Icon.png
 ```
 
-#### Version 
+**Important**: `Icon.png` file have to be a square image with `1024px` x `1024px` at least.
+
+### Print the Current Version
 ```bash
-$ ./makeicon --version
-```
-or
-```bash
-$ ./makeicon --v
+$ makeicon --version
+# or
+$ makeicon -v
 ```
 
 
-## FAQ
+## Contributors
+- [Jan Misek](https://github.com/janmisek1)
+- [Igor Lamos](https://github.com/igorlamos)
 
-## License 
-[Copyright (c) 2017 BePlus s.r.o. ](./LICENSE)
 
+## License
+[MIT](./LICENSE) Copyright (c) 2017 BePlus s.r.o.
