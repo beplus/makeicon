@@ -72,5 +72,5 @@ $ ./makeicon --v
 ## FAQ
 
 ## License 
-[Copyright (c) 2017 Be Bplus s.r.o. ](./LICENSE)
+[Copyright (c) 2017 BePlus s.r.o. ](./LICENSE)
 
