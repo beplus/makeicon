@@ -44,7 +44,7 @@ func save(file string) {
 	filenameArray := strings.Split(filename, ".")
 	name, extension := filenameArray[0], filenameArray[1]
 
-	myImage, err := image_helper.NewMyImageFromBase64(getImageBase64(args.Filename), name, extension)
+	myImage, err := image_helper.NewMyImageFromBase64(getImageBase64(file), name, extension)
 	if err != nil {
 		log.Fatal(err)
 	}
