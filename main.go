@@ -15,19 +15,19 @@ import (
 var version = "master"
 
 var args struct {
-	Filename string `short:"f" long:"file" description:"filename to make assets"`
-	Version  bool `short:"v" long:"version" description:"show version"`
+	Filename string `short:"f" long:"file" description:"File path to make the Icon from. Have to be square, 1024px x 1024px at least."`
+	Version  bool `short:"v" long:"version" description:"Show version."`
 }
 
 func main() {
 	_, err := flags.ParseArgs(&args, os.Args)
 	if err == nil {
 		if args.Version {
-			fmt.Printf(" Version: %v \n License: MIT \n Copyright (c) 2017 Be Bplus s.r.o. \n", version)
+			fmt.Printf(" Version: %v \n License: MIT \n Copyright (c) 2017 BePlus s.r.o. (https://be.plus/makeicon) \n", version)
 		} else {
 
 			if args.Filename == "" {
-				log.Fatal("No file set use -n or --file to set it")
+				log.Fatal("No file specified. Provide the path to the file using -f or --file.")
 			}
 
 			save(args.Filename)
@@ -49,20 +49,20 @@ func save(file string) {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Processing icons... It could few seconds...")
+	fmt.Println("Processing your Icons... It may take a while.")
 
 	_, err = myImage.Upload()
 	if err != nil {
 		log.Println(err)
 	} else {
-		fmt.Println("Icons saved to folder 'AppIcon'.")
+		fmt.Println("Your Icons was saved to a folder 'AppIcon'.")
 	}
 }
 
 func getImageBase64(filename string) string {
 	imgFile, err := os.Open(filename)
 	if err != nil {
-		log.Fatal("Open file fail")
+		log.Fatal("Failed to open file.")
 	}
 	defer imgFile.Close()
 
