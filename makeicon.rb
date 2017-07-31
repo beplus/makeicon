@@ -1,9 +1,9 @@
 class Makeicon < Formula
-  desc ""
-  homepage ""
-  url "https://github.com/beplus/makeicon/releases/download/v0.0.23/makeicon_0.0.23_darwin_amd64.tar.gz"
-  version "0.0.23"
-  sha256 "068126bf40a27c9b2f04c0c9f01dd0422b53339d4d0064810d7c22bb2ed22e37"
+  desc "Generate mobile app icons in all resolutions for both iOS and Android"
+  homepage "https://github.com/beplus/makeicon"
+  url "https://github.com/beplus/makeicon/releases/download/v0.0.26/makeicon_0.0.26_darwin_amd64.tar.gz"
+  version "0.0.26"
+  sha256 "a39c5d7d68b86e2d4454677af3487292a30ed3edf5fd883fac7c3b50255fe47e"
 
   def install
     bin.install "makeicon"
