@@ -23,7 +23,7 @@ Generates mobile app icons in all resolutions for both **iOS** and **Android**.
 
 ## Installation
 
-**Download** from Releases and extract _or_ use **Homebrew**
+**Download** from Releases and extract _or_ on a Mac computer install using **Homebrew**
 
 ```bash
 $ brew install https://raw.githubusercontent.com/beplus/makeicon/master/makeicon.rb
