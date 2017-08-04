@@ -1,10 +1,3 @@
-<p align="center">
-    <a href="https://twitter.com/beplusio">
-        <img src="https://pbs.twimg.com/profile_images/813834197001469952/-yh7WEVD_400x400.jpg">
-    </a>
-</p>
-<br>
-
 # makeicon
 
 [![Twitter: @beplusio](https://img.shields.io/badge/contact-@beplusio-blue.svg?style=flat)](https://twitter.com/beplusio)
